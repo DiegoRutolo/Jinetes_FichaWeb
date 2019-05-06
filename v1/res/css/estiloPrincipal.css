@@ -1,0 +1,140 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 1200px;
+	margin: auto;
+}
+
+@media only screen and (max-width: 1600px) {
+	body {
+		width: 800px;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	body {
+		width: 500px;
+	}
+}
+
+img.separador {
+	width: 100%;
+	margin: 2px 0;
+}
+
+.row {
+	width: 100%;
+	padding: 20px 0;
+	/*border: 1px solid red;*/
+}
+
+.row::after {
+	contet: "";
+	clear: both;
+	display: table;
+}
+
+[class*="col"] {
+	float: left;
+	padding: 5px;
+}
+
+/* Encabezado */
+
+#iTitulo {
+	margin: 20px auto;
+}
+
+header .col {
+	width: 33%;
+}
+
+header [id*="l"] {
+	width: 34%;
+}
+
+header [id*="i"] {
+	width: 66%;
+}
+
+/* Atributos */
+.atributos h2 {
+	text-align: center;
+}
+
+.atributos .primarios .atom {
+	width: 15%;
+	float: left;
+	margin: 2px;
+}
+
+.atributos .primarios .atom * {
+	text-align: center;
+	width: 100%;
+
+}
+
+.atributos .primarios .atom input {
+	font-size: 200%;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.atributos .primarios .atom output {
+	font-size: 150%;
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 80%;
+	display: block;
+	margin: auto;
+}
+
+.atributos .secundarios output {
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 80%;
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 120%;
+}
+
+.atributos .secundarios .col-A {
+	width: 60%;
+	/*border: 1px solid red;*/
+}
+
+.atributos .secundarios .col-A-A {
+	width: 33%;
+	/*border: 1px solid red;*/
+}
+
+.atributos .secundarios .col-A-B {
+	width: 67%;
+	/*border: 1px solid red;*/
+}
+
+.atributos .secundarios .col-B {
+	width: 40%;
+	/*border: 1px solid red;*/
+	text-align: center;
+	font-size: 150%;
+}
+
+.atributos .secundarios .col-B output {
+	border: 2px solid black;
+	border-radius: 5px;
+	display: block;
+	margin: auto;
+}
+
+.atributos .secundarios .col-C {
+	width: 100%;
+	text-align: center;
+}
+
+.atributos .secundarios .col-C * {
+	width: 100%;
+}

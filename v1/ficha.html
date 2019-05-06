@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ficha Jinetes</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="res/css/estiloPrincipal.css">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<script src="res/js/main.js"></script>
+</head>
+<body onload="main()">
+	<form oninput="actualizar()">
+		<!-- Encabezado -->
+		<header>
+			<h1 id="iTitulo">Los Cinco Jinetes</h1>
+			<br>
+			<div class="row">
+				<div class="col">
+					<label for="iNom" id="lNom">Nombre:</label>
+					<input type="text" name="nom" id="iNom">
+				</div>
+				<div class="col">
+					<label for="iEdad" id="lEdad">Edad:</label>
+					<input type="number" name="edad" id="iEdad">
+				</div>
+				<div class="col">
+					<label for="iAltur" id="lAltur">Altura:</label>
+					<input type="number" name="nom" id="iAltur">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label for="iRaza" id="lRaza">Raza:</label>
+					<select name="raza">
+						<option value="hum">Humano</option>
+						<option value="elf">Elfo</option>
+						<option value="ena">Enano</option>
+						<option value="due">Duende</option>
+					</select>
+				</div>
+				<div class="col">
+					<label for="iClase" id="lClase">Clase:</label>
+					<input type="text" name="clase" id="iClase">
+				</div>
+				<div class="col">
+					<label for="iPeso" id="lPeso">Peso:</label>
+					<input type="number" name="peso" id="iPeso">
+				</div>
+			</div>
+		</header>
+		<img src="res/img/separador.png" class="separador">
+		<!-- Atributos -->
+		<!-- B = A/2 - 20 -->
+		<section class="atributos">
+			<h2>Atributos</h2>
+			<div class="primarios">
+				<div class="atom">
+					<p>FUE</p>
+					<input type="number" id="fue" value="30">
+					<output id="bfue"></output>
+				</div>
+				<div class="atom">
+					<p>DES</p>
+					<input type="number" id="des" value="30">
+					<output id="bdes"></output>
+				</div>
+				<div class="atom">
+					<p>CON</p>
+					<input type="number" id="con" value="30">
+					<output id="bcon"></output>
+				</div>
+				<div class="atom">
+					<p>CAR</p>
+					<input type="number" id="car" value="30">
+					<output id="bcar"></output>
+				</div>
+				<div class="atom">
+					<p>INT</p>
+					<input type="number" id="int" value="30">
+					<output id="bint"></output>
+				</div>
+				<div class="atom">
+					<p>SAB</p>
+					<input type="number" id="sab" value="30">
+					<output id="bsab"></output>
+				</div>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="secundarios">
+				<div class="row">
+					<div class="col-A">
+						<div class="row">
+							<div class="col-A-A">
+								Movimiento:
+							</div>
+							<div class="col-A-A">
+								<output id="mov"></output>
+							</div>
+							<div class="col-A-A">
+								metros/turno
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-A-A">
+								Levantamiento:
+							</div>
+							<div class="col-A-A">
+								<output id="lev"></output>
+							</div>
+							<div class="col-A-A">
+								Kg
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-A-A">
+								Apariencia:
+							</div>
+							<div class="col-A-B">
+								<input type="range" min="1" max="10" name="apar" id="apar">
+							</div>
+						</div>
+					</div>
+					<div class="col-B">
+						<p>Vitalidad</p>
+						<output id="hp"></output>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-C">
+						<p>Mana/Devoción/Aguante/Ki</p>
+						<input type="range" min="0" max="20" name="mana" id="mana">
+					</div>
+				</div>
+			</div>
+		</section>
+		<img src="res/img/separador.png" class="separador">
+		<!-- AC -->
+		<section class="ac">
+		</section>
+		<img src="res/img/separador.png" class="separador">
+		<!-- Equipo -->
+		<section class="equioo">
+		</section>
+	</form>
+</body>
+</html>
