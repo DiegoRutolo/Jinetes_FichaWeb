@@ -41,6 +41,21 @@ img.separador {
 	padding: 5px;
 }
 
+output {
+	border: 2px solid black;
+	border-radius: 5px;
+	display: block;
+	margin: auto;
+}
+
+.lineaTexto {
+	width: 75%;
+	border: 0;
+	border-bottom: 1px solid black;
+	font-size: 110%;
+	font-style: italic;
+}
+
 /* Encabezado */
 
 #iTitulo {
@@ -84,19 +99,11 @@ header [id*="i"] {
 
 .atributos .primarios .atom output {
 	font-size: 150%;
-	border: 2px solid black;
-	border-radius: 5px;
 	width: 80%;
-	display: block;
-	margin: auto;
 }
 
 .atributos .secundarios output {
-	border: 2px solid black;
-	border-radius: 5px;
 	width: 80%;
-	display: block;
-	margin: auto;
 	text-align: center;
 	font-size: 120%;
 }
@@ -123,13 +130,6 @@ header [id*="i"] {
 	font-size: 150%;
 }
 
-.atributos .secundarios .col-B output {
-	border: 2px solid black;
-	border-radius: 5px;
-	display: block;
-	margin: auto;
-}
-
 .atributos .secundarios .col-C {
 	width: 100%;
 	text-align: center;
@@ -137,4 +137,87 @@ header [id*="i"] {
 
 .atributos .secundarios .col-C * {
 	width: 100%;
+}
+
+
+/* AC*/
+.ac .numeros > * {
+	float: left;
+	margin: auto 5px;
+}
+
+.ac .atom {
+	width: 14%;
+}
+
+.ac .numeros * {
+	font-size: 110%;
+	text-align: center;
+}
+
+.ac .numeros .atom:first-child {
+	font-size: 130%;
+}
+
+.ac .numeros .atom:first-child p {
+	margin-bottom: 5px;
+}
+
+.ac .numeros .atom *:last-child {
+	font-size: 150%;
+}
+
+.ac .numeros input {
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.ac .numeros > p {
+	margin-top: 4em;
+}
+
+#lineaArmadura {
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+
+#lineaArmadura label {
+	width: 25%;
+}
+
+/* Equipo */
+section.eqHabs > * {
+	float: left;
+}
+
+.eqHabs img {
+	width: 5%;
+	margin: 0 2em;
+}
+
+.eqHabs .col {
+	width: 43%;
+}
+
+.eqHabs .col * {
+	width: 100%;
+}
+
+
+/* Botones */
+aside {
+	position: fixed;
+	right: 20px;
+	top: 30px;
+}
+
+aside button {
+	background-color: SkyBlue;
+	border: none;
+	border-radius: 5px;
+	padding: 15px;
+	text-align: center;
+	text-decoration: none;
 }

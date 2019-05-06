@@ -8,29 +8,25 @@
 	<script src="res/js/main.js"></script>
 </head>
 <body onload="main()">
+	<aside class="botones">
+		<button type="button" onclick="guardar()">
+			<img src="res/img/save_icon.png" width="48" height="48">
+		</button>
+	</aside>
+
 	<form oninput="actualizar()">
 		<!-- Encabezado -->
 		<header>
-			<h1 id="iTitulo">Los Cinco Jinetes</h1>
+			<h1 id="iTitulo">Los Jinetes de Kal</h1>
 			<br>
 			<div class="row">
 				<div class="col">
 					<label for="iNom" id="lNom">Nombre:</label>
-					<input type="text" name="nom" id="iNom">
+					<input type="text" name="nom" id="iNom" class="lineaTexto">
 				</div>
-				<div class="col">
-					<label for="iEdad" id="lEdad">Edad:</label>
-					<input type="number" name="edad" id="iEdad">
-				</div>
-				<div class="col">
-					<label for="iAltur" id="lAltur">Altura:</label>
-					<input type="number" name="nom" id="iAltur">
-				</div>
-			</div>
-			<div class="row">
 				<div class="col">
 					<label for="iRaza" id="lRaza">Raza:</label>
-					<select name="raza">
+					<select name="raza" class="lineaTexto" id="iRaza">
 						<option value="hum">Humano</option>
 						<option value="elf">Elfo</option>
 						<option value="ena">Enano</option>
@@ -39,15 +35,25 @@
 				</div>
 				<div class="col">
 					<label for="iClase" id="lClase">Clase:</label>
-					<input type="text" name="clase" id="iClase">
+					<input type="text" name="clase" id="iClase" class="lineaTexto">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label for="iEdad" id="lEdad">Edad:</label>
+					<input type="number" name="edad" id="iEdad" class="lineaTexto">
+				</div>
+				<div class="col">
+					<label for="iAltur" id="lAltur">Altura:</label>
+					<input type="text" name="nom" id="iAltur" class="lineaTexto">
 				</div>
 				<div class="col">
 					<label for="iPeso" id="lPeso">Peso:</label>
-					<input type="number" name="peso" id="iPeso">
+					<input type="text" name="peso" id="iPeso" class="lineaTexto">
 				</div>
 			</div>
 		</header>
-		<img src="res/img/separador.png" class="separador">
+		<img src="res/img/separador_1_horizontal.png" class="separador">
 		<!-- Atributos -->
 		<!-- B = A/2 - 20 -->
 		<section class="atributos">
@@ -135,13 +141,68 @@
 				</div>
 			</div>
 		</section>
-		<img src="res/img/separador.png" class="separador">
+		<img src="res/img/separador_1_horizontal.png" class="separador">
 		<!-- AC -->
 		<section class="ac">
+			<div class="numeros">
+				<div class="atom">
+					<p>AC</p>
+					<output id="acTotal"></output>
+				</div>
+				<p>= 15 +</p>
+				<div class="atom">
+					<p>Bono DES</p>
+					<output id="acBDES"></output>
+				</div>
+				<p>+</p>
+				<div class="atom">
+					<p>Armadura</p>
+					<input type="number" id="acArmadura" value="0">
+				</div>
+				<p>+</p>
+				<div class="atom">
+					<p>Mod Raza</p>
+					<input type="number" id="acModRaza" value="0">
+				</div>
+				<p>+</p>
+				<div class="atom">
+					<p>Extras</p>
+					<input type="number" id="acExtras" value="0">
+				</div>
+			</div>
+			<div id="lineaArmadura">
+				<label for="iACnomArmadura">ARMADURA:</label>
+				<input type="text" id="iACnomArmadura" class="lineaTexto">
+			</div>
 		</section>
-		<img src="res/img/separador.png" class="separador">
+		<img src="res/img/separador_1_horizontal.png" class="separador">
 		<!-- Equipo -->
-		<section class="equioo">
+		<section class="eqHabs">
+			<div class="col">
+				<h3>Habilidades pasivas</h3>
+				<div class="lineas" id="lineasPasivas">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+				</div>
+			</div>
+			<img src="res/img/separador_2_vertical.png" onclick="nuevaLinea('equipo')">
+			<div class="col">
+				<h3>Equipo</h3>
+				<div class="lineas" id="lineasEquipo">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+				</div>
+			</div>
 		</section>
 	</form>
 </body>
