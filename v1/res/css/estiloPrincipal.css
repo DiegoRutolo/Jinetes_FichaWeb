@@ -12,12 +12,13 @@ body {
 		width: 800px;
 	}
 }
-
+/*
 @media only screen and (max-width: 850px) {
 	body {
 		width: 500px;
 	}
 }
+*/
 
 img.separador {
 	width: 100%;
@@ -209,8 +210,9 @@ section.eqHabs > * {
 /* Botones */
 aside {
 	position: fixed;
-	right: 20px;
+	right: 32px;
 	top: 30px;
+	width: 50px;
 }
 
 aside button {
@@ -220,4 +222,5 @@ aside button {
 	padding: 15px;
 	text-align: center;
 	text-decoration: none;
+	margin-top: 10px;
 }

@@ -1,14 +1,76 @@
+var pj = {
+	pj: {
+		general: {
+			nombre: "",
+			raza: "",
+			clase: "",
+			edad: "",
+			altura: "",
+			peso: ""
+		},
+		atributos: {
+			fue: "",
+			des: "",
+			con: "",
+			car: "",
+			int: "",
+			sab: "",
+			apar: ""
+		},
+		ac: {
+			acArm: "",
+			acExtra: "",
+			acArmTexto: ""
+		},
+		pasivas: [],
+		equipo: []
+	}
+}
+
 function main() {
 	actualizar();
 }
 
+function form2obj() {
+	pj['pj']['general']['nombre'] = document.getElementById('iNom').value;
+	pj['pj']['general']['raza'] = document.getElementById('iRaza').value;
+	pj['pj']['general']['clase'] = document.getElementById('iClase').value;
+	pj['pj']['general']['edad'] = document.getElementById('iEdad').value;
+	pj['pj']['general']['altura'] = document.getElementById('iAltur').value;
+	pj['pj']['general']['peso'] = document.getElementById('iPeso').value;
+
+	pj['pj']['atributos']['fue'] = normalizar(document.getElementById('fue').value);
+	pj['pj']['atributos']['des'] = normalizar(document.getElementById('des').value);
+	pj['pj']['atributos']['con'] = normalizar(document.getElementById('con').value);
+	pj['pj']['atributos']['car'] = normalizar(document.getElementById('car').value);
+	pj['pj']['atributos']['int'] = normalizar(document.getElementById('int').value);
+	pj['pj']['atributos']['sab'] = normalizar(document.getElementById('sab').value);
+
+	pj['pj']['ac']['acArm'] = document.getElementById('acArmadura').value;
+	pj['pj']['ac']['acExtra'] = document.getElementById('acExtras').value;
+
+	pj['pj']['ac']['acArmTexto'] = document.getElementById('iACnomArmadura').value;
+
+	for (i = 0; i < document.getElementById('lineasPasivas').children.length; i++) {
+		hab = document.getElementById('lineasPasivas').children[i].value;
+		pj['pj']['pasivas'].push(hab);
+	}
+
+	for (i = 0; i < document.getElementById('lineasEquipo').children.length; i++) {
+		hab = document.getElementById('lineasEquipo').children[i].value;
+		pj['pj']['equipo'].push(hab);
+	}
+}
+
 function actualizar() {
-	fue = normalizar(document.getElementById('fue').value);
-	des = normalizar(document.getElementById('des').value);
-	con = normalizar(document.getElementById('con').value);
-	car = normalizar(document.getElementById('car').value);
-	int = normalizar(document.getElementById('int').value);
-	sab = normalizar(document.getElementById('sab').value);
+	form2obj();
+
+	fue = pj['pj']['atributos']['fue'];
+	des = pj['pj']['atributos']['des'];
+	con = pj['pj']['atributos']['con'];
+	car = pj['pj']['atributos']['car'];
+	int = pj['pj']['atributos']['int'];
+	sab = pj['pj']['atributos']['sab'];
 
 	document.getElementById('fue').value = fue;
 	document.getElementById('des').value = des;
@@ -35,6 +97,8 @@ function actualizar() {
 	acModRaza = document.getElementById('acModRaza').value;
 	acExtras = document.getElementById('acExtras').value;
 	document.getElementById('acTotal').value = 15 + calcBono(des) + parseInt(acArmadura) + parseInt(acModRaza) + parseInt(acExtras);
+
+	console.log(pj);
 }
 
 function normalizar(stat) {
@@ -47,7 +111,7 @@ function normalizar(stat) {
 	}
 }
 
-function calcBono(stat, bono) {
+function calcBono(stat) {
 	return Math.floor(parseInt(stat)/2 - 20);
 }
 
@@ -58,6 +122,8 @@ function nuevaLinea(lugar) {
 	}
 }
 
+/* OBSOLETA */
+/*
 function generarPj() {
 	//Generales
 	nombre = document.getElementById('iNom').value;
@@ -124,9 +190,9 @@ function generarPj() {
 
 	return pj;
 }
+*/
 
 function descargar() {
-	var pj = generarPj();
 	var jsonPj = JSON.stringify(pj);
 
 	var blob = new Blob([jsonPj], {type: "application/json"});
@@ -137,4 +203,12 @@ function descargar() {
 	a.download = fileName;
 	a.href = url;
 	a.click();
+}
+
+function cargar() {
+	document.getElementById('iCarga').click();
+	var file = document.getElementById('iCarga').value;
+	
+	var reader = new FileReader();
+	
 }
