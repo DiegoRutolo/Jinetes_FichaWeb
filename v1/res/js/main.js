@@ -58,7 +58,7 @@ function nuevaLinea(lugar) {
 	}
 }
 
-function guardar() {
+function generarPj() {
 	//Generales
 	nombre = document.getElementById('iNom').value;
 	raza = document.getElementById('iRaza').value;
@@ -122,16 +122,19 @@ function guardar() {
 		pj['pj']['equipo'].push(hab);
 	}
 
-	var jsonPj = JSON.stringify(pj);
-	console.log(jsonPj);
-
-	//download(jsonPj, 'json.txt', 'text/plain');
+	return pj;
 }
 
-function download(content, fileName, contentType) {
-    var a = document.createElement("a");
-    var file = new Blob([content], {type: contentType});
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
+function descargar() {
+	var pj = generarPj();
+	var jsonPj = JSON.stringify(pj);
+
+	var blob = new Blob([jsonPj], {type: "application/json"});
+	var url = URL.createObjectURL(blob);
+	var fileName = "pj_"+pj['pj']['general']['nombre']+".json";
+
+	var a = document.getElementById('linkDescarga');
+	a.download = fileName;
+	a.href = url;
+	a.click();
 }
