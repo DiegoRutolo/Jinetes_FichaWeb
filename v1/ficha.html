@@ -14,7 +14,7 @@
 				<img src="res/img/save_icon.png" width="48" height="48">
 			</a>
 		</button>
-		<button type="button" onclick="cargar()">
+		<button type="button" onclick="botonSubir()">
 			<img src="res/img/load_icon.png" width="48" height="48">
 			<input type="file" style="display: none" id="iCarga" accept=".json">
 		</button>
@@ -50,8 +50,8 @@
 					<input type="number" name="edad" id="iEdad" class="lineaTexto">
 				</div>
 				<div class="col">
-					<label for="iAltur" id="lAltur">Altura:</label>
-					<input type="text" name="nom" id="iAltur" class="lineaTexto">
+					<label for="iAltura" id="lAltura">Altura:</label>
+					<input type="text" name="nom" id="iAltura" class="lineaTexto">
 				</div>
 				<div class="col">
 					<label for="iPeso" id="lPeso">Peso:</label>
@@ -172,13 +172,13 @@
 				</div>
 				<p>+</p>
 				<div class="atom">
-					<p>Extras</p>
-					<input type="number" id="acExtras" value="0">
+					<p>Extra</p>
+					<input type="number" id="acExtra" value="0">
 				</div>
 			</div>
 			<div id="lineaArmadura">
 				<label for="iACnomArmadura">ARMADURA:</label>
-				<input type="text" id="iACnomArmadura" class="lineaTexto">
+				<input type="text" id="iACarmTexto" class="lineaTexto">
 			</div>
 		</section>
 		<img src="res/img/separador_1_horizontal.png" class="separador">
@@ -194,12 +194,22 @@
 					<input type="text" class="lineaTexto">
 					<input type="text" class="lineaTexto">
 					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
 				</div>
 			</div>
-			<img src="res/img/separador_2_vertical.png" onclick="nuevaLinea('equipo')">
+			<img src="res/img/separador_2_vertical.png">
 			<div class="col">
 				<h3>Equipo</h3>
 				<div class="lineas" id="lineasEquipo">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
+					<input type="text" class="lineaTexto">
 					<input type="text" class="lineaTexto">
 					<input type="text" class="lineaTexto">
 					<input type="text" class="lineaTexto">

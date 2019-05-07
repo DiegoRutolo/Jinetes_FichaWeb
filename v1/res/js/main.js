@@ -19,6 +19,7 @@ var pj = {
 		},
 		ac: {
 			acArm: "",
+			acModRaza: "",
 			acExtra: "",
 			acArmTexto: ""
 		},
@@ -28,6 +29,9 @@ var pj = {
 }
 
 function main() {
+	//añadir evento para leer archivos subidos
+	document.getElementById('iCarga').addEventListener('change', readFile, false);
+
 	actualizar();
 }
 
@@ -36,7 +40,7 @@ function form2obj() {
 	pj['pj']['general']['raza'] = document.getElementById('iRaza').value;
 	pj['pj']['general']['clase'] = document.getElementById('iClase').value;
 	pj['pj']['general']['edad'] = document.getElementById('iEdad').value;
-	pj['pj']['general']['altura'] = document.getElementById('iAltur').value;
+	pj['pj']['general']['altura'] = document.getElementById('iAltura').value;
 	pj['pj']['general']['peso'] = document.getElementById('iPeso').value;
 
 	pj['pj']['atributos']['fue'] = normalizar(document.getElementById('fue').value);
@@ -46,24 +50,31 @@ function form2obj() {
 	pj['pj']['atributos']['int'] = normalizar(document.getElementById('int').value);
 	pj['pj']['atributos']['sab'] = normalizar(document.getElementById('sab').value);
 
+	pj['pj']['atributos']['apar'] = document.getElementById('apar').value;
+
 	pj['pj']['ac']['acArm'] = document.getElementById('acArmadura').value;
-	pj['pj']['ac']['acExtra'] = document.getElementById('acExtras').value;
+	pj['pj']['ac']['acModRaza'] = document.getElementById('acModRaza').value;
+	pj['pj']['ac']['acExtra'] = document.getElementById('acExtra').value;
 
-	pj['pj']['ac']['acArmTexto'] = document.getElementById('iACnomArmadura').value;
+	pj['pj']['ac']['acArmTexto'] = document.getElementById('iACarmTexto').value;
 
-	for (i = 0; i < document.getElementById('lineasPasivas').children.length; i++) {
+	for (i = 0; i < 12; i++) {
 		hab = document.getElementById('lineasPasivas').children[i].value;
-		pj['pj']['pasivas'].push(hab);
-	}
+		pj['pj']['pasivas'][i] = hab;
 
-	for (i = 0; i < document.getElementById('lineasEquipo').children.length; i++) {
-		hab = document.getElementById('lineasEquipo').children[i].value;
-		pj['pj']['equipo'].push(hab);
+		obj = document.getElementById('lineasEquipo').children[i].value;
+		pj['pj']['equipo'][i] = obj;
 	}
 }
 
-function actualizar() {
-	form2obj();
+function obj2form() {
+	//Generales
+	document.getElementById('iNom').value = pj['pj']['general']['nombre'];
+	document.getElementById('iRaza').value = pj['pj']['general']['raza'];
+	document.getElementById('iClase').value = pj['pj']['general']['clase'];
+	document.getElementById('iEdad').value = pj['pj']['general']['edad'];
+	document.getElementById('iAltura').value = pj['pj']['general']['altura'];
+	document.getElementById('iPeso').value = pj['pj']['general']['peso'];
 
 	fue = pj['pj']['atributos']['fue'];
 	des = pj['pj']['atributos']['des'];
@@ -72,6 +83,7 @@ function actualizar() {
 	int = pj['pj']['atributos']['int'];
 	sab = pj['pj']['atributos']['sab'];
 
+	// Primarios
 	document.getElementById('fue').value = fue;
 	document.getElementById('des').value = des;
 	document.getElementById('con').value = con;
@@ -79,6 +91,7 @@ function actualizar() {
 	document.getElementById('int').value = int;
 	document.getElementById('sab').value = sab;
 
+	//Bonos
 	document.getElementById('bfue').value = calcBono(fue);
 	document.getElementById('bdes').value = calcBono(des);
 	document.getElementById('bcon').value = calcBono(con);
@@ -90,15 +103,34 @@ function actualizar() {
 	document.getElementById('mov').value = Math.floor(des/2);
 	document.getElementById('lev').value = Math.floor(fue*2);
 	document.getElementById('hp').value = Math.floor(con*5);
+	document.getElementById('apar').value = pj['pj']['atributos']['apar'];
 
 	/* Calcular AC */
 	document.getElementById('acBDES').value = calcBono(des);
-	acArmadura = document.getElementById('acArmadura').value;
-	acModRaza = document.getElementById('acModRaza').value;
-	acExtras = document.getElementById('acExtras').value;
-	document.getElementById('acTotal').value = 15 + calcBono(des) + parseInt(acArmadura) + parseInt(acModRaza) + parseInt(acExtras);
+	acArmadura = pj['pj']['ac']['acArm'];
+	document.getElementById('acArmadura').value = acArmadura
+	acModRaza = pj['pj']['ac']['acModRaza'];
+	document.getElementById('acModRaza').value = acModRaza;
+	acExtra = pj['pj']['ac']['acExtra'];
+	document.getElementById('acExtra').value = acExtra;
+	document.getElementById('acTotal').value = 15 + calcBono(des) + parseInt(acArmadura) + parseInt(acModRaza) + parseInt(acExtra);
 
-	console.log(pj);
+	document.getElementById('iACarmTexto').value = pj['pj']['ac']['acArmTexto'];
+
+	// Pasivas y equipo
+	for (i = 0; i < 12; i++) {
+		document.getElementById('lineasPasivas').children[i].value = pj['pj']['pasivas'][i];
+
+		obj = document.getElementById('lineasEquipo').children[i].value = pj['pj']['equipo'][i];
+	}
+
+	//console.log(pj);
+}
+
+
+function actualizar() {
+	form2obj();
+	obj2form();
 }
 
 function normalizar(stat) {
@@ -111,8 +143,13 @@ function normalizar(stat) {
 	}
 }
 
+//https://stackoverflow.com/questions/4912788/truncate-not-round-off-decimal-numbers-in-javascript#9232092
+truncar = function (number) {
+    return Math[number < 0 ? 'ceil' : 'floor'](number);
+};
+
 function calcBono(stat) {
-	return Math.floor(parseInt(stat)/2 - 20);
+	return truncar(parseInt(stat)/2 - 20);
 }
 
 function nuevaLinea(lugar) {
@@ -130,7 +167,7 @@ function generarPj() {
 	raza = document.getElementById('iRaza').value;
 	clase = document.getElementById('iClase').value;
 	edad = document.getElementById('iEdad').value;
-	altura = document.getElementById('iAltur').value;
+	altura = document.getElementById('iAltura').value;
 	peso = document.getElementById('iPeso').value;
 
 	//principales
@@ -157,7 +194,7 @@ function generarPj() {
 				raza: document.getElementById('iRaza').value,
 				clase: document.getElementById('iClase').value,
 				edad: document.getElementById('iEdad').value,
-				altura: document.getElementById('iAltur').value,
+				altura: document.getElementById('iAltura').value,
 				peso: document.getElementById('iPeso').value
 			},
 			atributos: {
@@ -192,10 +229,11 @@ function generarPj() {
 }
 */
 
+/*
 function descargar() {
 	var jsonPj = JSON.stringify(pj);
 
-	var blob = new Blob([jsonPj], {type: "application/json"});
+	var blob = new Blob([jsonPj], {type: "text/json"});
 	var url = URL.createObjectURL(blob);
 	var fileName = "pj_"+pj['pj']['general']['nombre']+".json";
 
@@ -204,11 +242,40 @@ function descargar() {
 	a.href = url;
 	a.click();
 }
+*/
 
-function cargar() {
+//Esta version me parece menos rebuscada
+function descargar() {
+	var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pj));
+	var fileName = "pj_"+pj['pj']['general']['nombre']+".json";
+
+	var a = document.getElementById('linkDescarga');
+	a.href = 'data:' + data;
+	a.download = fileName;
+	a.click();
+}
+
+function botonSubir() {
 	document.getElementById('iCarga').click();
-	var file = document.getElementById('iCarga').value;
-	
-	var reader = new FileReader();
-	
+}
+
+//https://www.htmlgoodies.com/beyond/javascript/read-text-files-using-the-javascript-filereader.html
+function readFile(evt) {
+	var f = evt.target.files[0];
+
+	if (f) {
+		var r = new FileReader();
+		r.onload = function(e) { 
+			var contents = e.target.result;
+			data2ficha(contents);
+		}
+		r.readAsText(f);
+	} else { 
+		alert("Failed to load file");
+	}
+}
+
+function data2ficha(data) {
+	pj = JSON.parse(data);
+	obj2form();
 }
