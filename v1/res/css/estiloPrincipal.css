@@ -140,6 +140,10 @@ header [id*="i"] {
 	width: 100%;
 }
 
+.atributos .secundarios #contenedorApar  {
+	
+}
+
 /* AC*/
 .ac .numeros > * {
 	float: left;

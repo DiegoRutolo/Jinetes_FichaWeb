@@ -279,3 +279,7 @@ function data2ficha(data) {
 	pj = JSON.parse(data);
 	obj2form();
 }
+
+function actualizarApar(valor) {
+	document.getElementById('apar').value = valor;
+}
