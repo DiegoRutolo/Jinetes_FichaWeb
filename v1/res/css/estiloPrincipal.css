@@ -140,7 +140,6 @@ header [id*="i"] {
 	width: 100%;
 }
 
-
 /* AC*/
 .ac .numeros > * {
 	float: left;
@@ -223,4 +222,5 @@ aside button {
 	text-align: center;
 	text-decoration: none;
 	margin-top: 10px;
+	cursor: pointer;
 }
