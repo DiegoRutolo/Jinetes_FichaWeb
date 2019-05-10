@@ -75,6 +75,10 @@ header [id*="i"] {
 	width: 66%;
 }
 
+[onclick] {
+	cursor: pointer;
+}
+
 /* Atributos */
 .atributos h2 {
 	text-align: center;
@@ -89,6 +93,10 @@ header [id*="i"] {
 .atributos .primarios .atom * {
 	text-align: center;
 	width: 100%;
+}
+
+.atributos .primarios .atom p {
+	font-weight: normal;
 }
 
 .atributos .primarios .atom input {
@@ -201,6 +209,14 @@ header [id*="i"] {
 #contenedorMana input:checked + label {
 	display: inline-block;
 	background: url('../img/bola_llena.png') no-repeat;
+	height: 33px;
+	width: 33px;
+	background-size: 90%;
+}
+
+#contenedorMana input:disabled + label {
+	display: inline-block;
+	background: url('../img/bola_inactiva.png') no-repeat;
 	height: 33px;
 	width: 33px;
 	background-size: 90%;

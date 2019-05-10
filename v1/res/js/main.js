@@ -1,5 +1,6 @@
 var pj = {
 	pj: {
+		atr: "",
 		general: {
 			nombre: "",
 			raza: "",
@@ -89,6 +90,8 @@ function obj2form() {
 	int = pj['pj']['atributos']['int'];
 	sab = pj['pj']['atributos']['sab'];
 
+	marcarPrincipal();
+
 	// Primarios
 	document.getElementById('fue').value = fue;
 	document.getElementById('des').value = des;
@@ -139,6 +142,7 @@ function obj2form() {
 function actualizar() {
 	form2obj();
 	obj2form();
+	calcManaMax();
 }
 
 function normalizar(stat) {
@@ -202,9 +206,26 @@ function data2ficha(data) {
 	obj2form();
 }
 
+function calcManaMax() {
+	var casillas = document.getElementsByName('mana');
+	var manaMax = 20;
+
+	if (pj['pj']['atr']) {
+		manaMax = Math.floor(parseInt(document.getElementById(pj['pj']['atr']).value) / 5)
+	}
+
+	for (var i in casillas) {
+		if (casillas[i].value > manaMax) {
+			casillas[i].disabled = true;
+		} else {
+			casillas[i].disabled = false;
+		}
+	}
+}
+
 function actualizarMana(casilla) {
+	calcManaMax();
 	document.getElementById('mana').value = casilla.value;
-	console.log(casilla.value);
 	var casillas = document.getElementsByName('mana');
 
 	for (var i in casillas) {
@@ -228,4 +249,21 @@ function sumaHP(sign) {
 
 function maxHP() {
 	document.getElementById('hpAct').value = document.getElementById('hpMax').value;
+}
+
+function setPrincipal(atr) {
+	pj['pj']['atr'] = atr.innerHTML.toLowerCase();
+	actualizar();
+}
+
+function marcarPrincipal() {
+	var atrs = document.getElementsByName('nomAtr');
+	for (var i = 0; i < 6; i++) {
+		if (atrs[i].innerHTML.toLowerCase() == pj['pj']['atr']) {
+			atrs[i].style.textDecoration = 'underline';
+		} else {
+			atrs[i].style.textDecoration = 'none';
+		}
+	}
+	calcManaMax();
 }
