@@ -89,7 +89,6 @@ header [id*="i"] {
 .atributos .primarios .atom * {
 	text-align: center;
 	width: 100%;
-
 }
 
 .atributos .primarios .atom input {
@@ -103,10 +102,29 @@ header [id*="i"] {
 	width: 80%;
 }
 
+.atributos .secundarios {
+	font-size: 120%;
+}
+
 .atributos .secundarios output {
 	width: 80%;
 	text-align: center;
-	font-size: 120%;
+}
+
+.atributos .secundarios input {
+	width: 100%;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 5px;
+	font-size: 110%;
+}
+
+
+.atributos .secundarios button {
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 3em;
+	cursor: pointer;
 }
 
 .atributos .secundarios .col-A {
@@ -124,11 +142,35 @@ header [id*="i"] {
 	/*border: 1px solid red;*/
 }
 
+.atributos .secundarios .col-A-B input {
+	width: 45%;
+}
+
 .atributos .secundarios .col-B {
 	width: 40%;
 	/*border: 1px solid red;*/
 	text-align: center;
-	font-size: 150%;
+}
+
+.atributos .secundarios .col-B output {
+	width: 100%;
+}
+
+.atributos .secundarios .col-B * {
+	padding: 0;
+	margin: 2px;
+}
+
+.atributos .secundarios .col-B table {
+	table-layout: fixed;
+}
+
+.atributos .secundarios .col-B-B {
+	width: 100%;
+}
+
+.atributos .secundarios .col-B-B input {
+	width: 60%;
 }
 
 .atributos .secundarios .col-C {
@@ -148,35 +190,19 @@ header [id*="i"] {
 	cursor: pointer;
 }
 
-#contenedorApar input + label {
-	display: inline-block;
-	background: url('../img/bola_vacia.png') no-repeat;
-	height: 25px;
-	width: 25px;
-	background-size: 90%;
-}
-
 #contenedorMana input + label {
 	display: inline-block;
 	background: url('../img/bola_vacia.png') no-repeat;
-	height: 34px;
-	width: 34px;
-	background-size: 90%;
-}
-
-#contenedorApar input:checked + label {
-	display: inline-block;
-	background: url('../img/bola_gris.png') no-repeat;
-	height: 25px;
-	width: 25px;
+	height: 33px;
+	width: 33px;
 	background-size: 90%;
 }
 
 #contenedorMana input:checked + label {
 	display: inline-block;
-	background: url('../img/bola_azul.png') no-repeat;
-	height: 34px;
-	width: 34px;
+	background: url('../img/bola_llena.png') no-repeat;
+	height: 33px;
+	width: 33px;
 	background-size: 90%;
 }
 

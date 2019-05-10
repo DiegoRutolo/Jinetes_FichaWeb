@@ -20,7 +20,7 @@
 		</button>
 	</aside>
 
-	<form oninput="actualizar()">
+	<form oninput="actualizar()" method="post">
 		<!-- Encabezado -->
 		<header>
 			<h1 id="iTitulo">Los Jinetes de Kal</h1>
@@ -130,36 +130,40 @@
 								Apariencia:
 							</div>
 							<div class="col-A-B">
-								<input type="range" min="1" max="10" id="apar" style="display: none">
-								<div class="contenedor" id="contenedorApar">
-									<input type="checkbox" name="apar" id="iApar1" value="1" onclick="actualizarApar(this)">
-									<label for="iApar1"></label>
-									<input type="checkbox" name="apar" id="iApar2" value="2" onclick="actualizarApar(this)">
-									<label for="iApar2"></label>
-									<input type="checkbox" name="apar" id="iApar3" value="3" onclick="actualizarApar(this)">
-									<label for="iApar3"></label>
-									<input type="checkbox" name="apar" id="iApar4" value="4" onclick="actualizarApar(this)">
-									<label for="iApar4"></label>
-									<input type="checkbox" name="apar" id="iApar5" value="5" onclick="actualizarApar(this)" checked>
-									<label for="iApar5"></label>
-									<input type="checkbox" name="apar" id="iApar6" value="6" onclick="actualizarApar(this)">
-									<label for="iApar6"></label>
-									<input type="checkbox" name="apar" id="iApar7" value="7" onclick="actualizarApar(this)">
-									<label for="iApar7"></label>
-									<input type="checkbox" name="apar" id="iApar8" value="8" onclick="actualizarApar(this)">
-									<label for="iApar8"></label>
-									<input type="checkbox" name="apar" id="iApar9" value="9" onclick="actualizarApar(this)">
-									<label for="iApar9"></label>
-									<input type="checkbox" name="apar" id="iApar10" value="10" onclick="actualizarApar(this)">
-									<label for="iApar10"></label>
-								</div>
+								<input type="number" id="apar" value="5">
 							</div>
 						</div>
 					</div>
 					<div class="col-B">
-						<p>Vitalidad</p>
-						<output id="hp"></output>
-					</div>
+						<table>
+							<tr>
+								<td colspan="2">
+									<h3>Vitalidad</h3>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<p>Maxima</p>
+									<output id="hpMax"></output>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" class="width: 80%;">
+									<p>Actual</p>
+									<input type="number" id="hpAct">
+								</td>
+								<td class="col-B-B">
+									<input type="number" id="hpDif" value="0">
+								</td>
+							</tr>
+							<tr>
+								<td class="col-B-B">
+									<button type="button" onclick="sumaHP(1)">+</button>
+									<button type="button" onclick="sumaHP(-1)">-</button>
+									<button type="button" onclick="maxHP()">Max</button>
+								</td>
+							</tr>
+						</table>
 				</div>
 				<div class="row">
 					<div class="col-C">

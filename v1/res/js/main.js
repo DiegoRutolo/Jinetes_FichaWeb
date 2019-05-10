@@ -15,7 +15,10 @@ var pj = {
 			car: "",
 			int: "",
 			sab: "",
-			apar: ""
+			apar: "",
+			hpAct: "",
+			manaMax: "",
+			manaAct: ""
 		},
 		ac: {
 			acArm: "",
@@ -33,7 +36,7 @@ function main() {
 	document.getElementById('iCarga').addEventListener('change', readFile, false);
 
 	actualizar();
-	actualizarApar(document.getElementsByName('apar')[4])
+	maxHP();
 }
 
 function form2obj() {
@@ -52,6 +55,8 @@ function form2obj() {
 	pj['pj']['atributos']['sab'] = normalizar(document.getElementById('sab').value);
 
 	pj['pj']['atributos']['apar'] = document.getElementById('apar').value;
+	pj['pj']['atributos']['hpAct'] = document.getElementById('hpAct').value;
+	pj['pj']['atributos']['manaAct'] = document.getElementById('mana').value;
 
 	pj['pj']['ac']['acArm'] = document.getElementById('acArmadura').value;
 	pj['pj']['ac']['acModRaza'] = document.getElementById('acModRaza').value;
@@ -103,8 +108,10 @@ function obj2form() {
 	/* Calcular atributos secundarios */
 	document.getElementById('mov').value = Math.floor(des/2);
 	document.getElementById('lev').value = Math.floor(fue*2);
-	document.getElementById('hp').value = Math.floor(con*5);
 	document.getElementById('apar').value = pj['pj']['atributos']['apar'];
+	document.getElementById('hpMax').value = Math.floor(con*5);
+	document.getElementById('hpAct').value = pj['pj']['atributos']['hpAct'];
+	document.getElementById('mana').value = pj['pj']['atributos']['manaAct'];
 
 	/* Calcular AC */
 	document.getElementById('acBDES').value = calcBono(des);
@@ -160,92 +167,6 @@ function nuevaLinea(lugar) {
 	}
 }
 
-/* OBSOLETA */
-/*
-function generarPj() {
-	//Generales
-	nombre = document.getElementById('iNom').value;
-	raza = document.getElementById('iRaza').value;
-	clase = document.getElementById('iClase').value;
-	edad = document.getElementById('iEdad').value;
-	altura = document.getElementById('iAltura').value;
-	peso = document.getElementById('iPeso').value;
-
-	//principales
-	fue = normalizar(document.getElementById('fue').value);
-	des = normalizar(document.getElementById('des').value);
-	con = normalizar(document.getElementById('con').value);
-	car = normalizar(document.getElementById('car').value);
-	int = normalizar(document.getElementById('int').value);
-	sab = normalizar(document.getElementById('sab').value);
-
-	//Secundario
-	apariencia = document.getElementById('apar').value;
-
-	//Ac
-	acArm = document.getElementById('acArmadura').value;
-	acExtra = document.getElementById('acExtras').value;
-
-	armTexto = document.getElementById('iACnomArmadura').value;
-
-	var pj = {
-		pj: {
-			general: {
-				nombre: document.getElementById('iNom').value,
-				raza: document.getElementById('iRaza').value,
-				clase: document.getElementById('iClase').value,
-				edad: document.getElementById('iEdad').value,
-				altura: document.getElementById('iAltura').value,
-				peso: document.getElementById('iPeso').value
-			},
-			atributos: {
-				fue: fue,
-				des: des,
-				con: con,
-				car: car,
-				int: int,
-				sab: sab,
-				apar: apariencia
-			},
-			ac: {
-				acArm: acArm,
-				acExtra: acExtra
-			},
-			pasivas: [],
-			equipo: []
-		}
-	}
-
-	for (i = 0; i < document.getElementById('lineasPasivas').children.length; i++) {
-		hab = document.getElementById('lineasPasivas').children[i].value;
-		pj['pj']['pasivas'].push(hab);
-	}
-
-	for (i = 0; i < document.getElementById('lineasEquipo').children.length; i++) {
-		hab = document.getElementById('lineasEquipo').children[i].value;
-		pj['pj']['equipo'].push(hab);
-	}
-
-	return pj;
-}
-*/
-
-/*
-function descargar() {
-	var jsonPj = JSON.stringify(pj);
-
-	var blob = new Blob([jsonPj], {type: "text/json"});
-	var url = URL.createObjectURL(blob);
-	var fileName = "pj_"+pj['pj']['general']['nombre']+".json";
-
-	var a = document.getElementById('linkDescarga');
-	a.download = fileName;
-	a.href = url;
-	a.click();
-}
-*/
-
-//Esta version me parece menos rebuscada
 function descargar() {
 	var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pj));
 	var fileName = "pj_"+pj['pj']['general']['nombre']+".json";
@@ -281,19 +202,17 @@ function data2ficha(data) {
 	obj2form();
 }
 
-function actualizarApar(casilla) {
-	document.getElementById('apar').value = casilla.value;
+function actualizarMana(casilla) {
+	document.getElementById('mana').value = casilla.value;
 	console.log(casilla.value);
-	var casillas = document.getElementsByName('apar');
-	
-	if (casilla.checked) {
-		for (var i in casillas) {
+	var casillas = document.getElementsByName('mana');
+
+	for (var i in casillas) {
+		if (casilla.checked) {
 			if (parseInt(casillas[i].value) < parseInt(casilla.value)) {
 				casillas[i].checked = true;
 			}
-		}
-	} else {
-		for (var i in casillas) {
+		} else {
 			if (parseInt(casillas[i].value) > parseInt(casilla.value)) {
 				casillas[i].checked = false;
 			}
@@ -301,22 +220,12 @@ function actualizarApar(casilla) {
 	}
 }
 
-function actualizarMana(casilla) {
-	document.getElementById('mana').value = casilla.value;
-	console.log(casilla.value);
-	var casillas = document.getElementsByName('mana');
-	
-	if (casilla.checked) {
-		for (var i in casillas) {
-			if (parseInt(casillas[i].value) < parseInt(casilla.value)) {
-				casillas[i].checked = true;
-			}
-		}
-	} else {
-		for (var i in casillas) {
-			if (parseInt(casillas[i].value) > parseInt(casilla.value)) {
-				casillas[i].checked = false;
-			}
-		}
-	}
+function sumaHP(sign) {
+	hpAct = parseInt(document.getElementById('hpAct').value);
+	hpAct += sign * parseInt(document.getElementById('hpDif').value);
+	document.getElementById('hpAct').value = hpAct;
+}
+
+function maxHP() {
+	document.getElementById('hpAct').value = document.getElementById('hpMax').value;
 }
