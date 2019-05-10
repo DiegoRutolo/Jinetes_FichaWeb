@@ -140,8 +140,44 @@ header [id*="i"] {
 	width: 100%;
 }
 
-.atributos .secundarios #contenedorApar  {
-	
+.contenedor input {
+	display: none;
+}
+
+.contenedor label {
+	cursor: pointer;
+}
+
+#contenedorApar input + label {
+	display: inline-block;
+	background: url('../img/bola_vacia.png') no-repeat;
+	height: 25px;
+	width: 25px;
+	background-size: 90%;
+}
+
+#contenedorMana input + label {
+	display: inline-block;
+	background: url('../img/bola_vacia.png') no-repeat;
+	height: 34px;
+	width: 34px;
+	background-size: 90%;
+}
+
+#contenedorApar input:checked + label {
+	display: inline-block;
+	background: url('../img/bola_gris.png') no-repeat;
+	height: 25px;
+	width: 25px;
+	background-size: 90%;
+}
+
+#contenedorMana input:checked + label {
+	display: inline-block;
+	background: url('../img/bola_azul.png') no-repeat;
+	height: 34px;
+	width: 34px;
+	background-size: 90%;
 }
 
 /* AC*/

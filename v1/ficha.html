@@ -131,17 +131,27 @@
 							</div>
 							<div class="col-A-B">
 								<input type="range" min="1" max="10" id="apar" style="display: none">
-								<div id="contenedorApar">
-									<input type="radio" name="apar" id="iApar1" value="1" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar2" value="2" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar3" value="3" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar4" value="4" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar5" value="5" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar6" value="6" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar7" value="7" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar8" value="8" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar9" value="9" onclick="actualizarApar(this.value)">
-									<input type="radio" name="apar" id="iApar10" value="10" onclick="actualizarApar(this.value)">
+								<div class="contenedor" id="contenedorApar">
+									<input type="checkbox" name="apar" id="iApar1" value="1" onclick="actualizarApar(this)">
+									<label for="iApar1"></label>
+									<input type="checkbox" name="apar" id="iApar2" value="2" onclick="actualizarApar(this)">
+									<label for="iApar2"></label>
+									<input type="checkbox" name="apar" id="iApar3" value="3" onclick="actualizarApar(this)">
+									<label for="iApar3"></label>
+									<input type="checkbox" name="apar" id="iApar4" value="4" onclick="actualizarApar(this)">
+									<label for="iApar4"></label>
+									<input type="checkbox" name="apar" id="iApar5" value="5" onclick="actualizarApar(this)" checked>
+									<label for="iApar5"></label>
+									<input type="checkbox" name="apar" id="iApar6" value="6" onclick="actualizarApar(this)">
+									<label for="iApar6"></label>
+									<input type="checkbox" name="apar" id="iApar7" value="7" onclick="actualizarApar(this)">
+									<label for="iApar7"></label>
+									<input type="checkbox" name="apar" id="iApar8" value="8" onclick="actualizarApar(this)">
+									<label for="iApar8"></label>
+									<input type="checkbox" name="apar" id="iApar9" value="9" onclick="actualizarApar(this)">
+									<label for="iApar9"></label>
+									<input type="checkbox" name="apar" id="iApar10" value="10" onclick="actualizarApar(this)">
+									<label for="iApar10"></label>
 								</div>
 							</div>
 						</div>
@@ -153,8 +163,50 @@
 				</div>
 				<div class="row">
 					<div class="col-C">
-						<p>Mana/Devoción/Aguante/Ki</p>
-						<input type="range" min="0" max="20" name="mana" id="mana">
+						<h3>Mana/Devoción/Aguante/Ki</h3>
+						<input type="range" min="1" max="20" id="mana" style="display:none">
+						<div class="contenedor" id="contenedorMana">
+							<input type="checkbox" name="mana" id="iMana1" value="1" onclick="actualizarMana(this)">
+							<label for="iMana1"></label>
+							<input type="checkbox" name="mana" id="iMana2" value="2" onclick="actualizarMana(this)">
+							<label for="iMana2"></label>
+							<input type="checkbox" name="mana" id="iMana3" value="3" onclick="actualizarMana(this)">
+							<label for="iMana3"></label>
+							<input type="checkbox" name="mana" id="iMana4" value="4" onclick="actualizarMana(this)">
+							<label for="iMana4"></label>
+							<input type="checkbox" name="mana" id="iMana5" value="5" onclick="actualizarMana(this)">
+							<label for="iMana5"></label>
+							<input type="checkbox" name="mana" id="iMana6" value="6" onclick="actualizarMana(this)">
+							<label for="iMana6"></label>
+							<input type="checkbox" name="mana" id="iMana7" value="7" onclick="actualizarMana(this)">
+							<label for="iMana7"></label>
+							<input type="checkbox" name="mana" id="iMana8" value="8" onclick="actualizarMana(this)">
+							<label for="iMana8"></label>
+							<input type="checkbox" name="mana" id="iMana9" value="9" onclick="actualizarMana(this)">
+							<label for="iMana9"></label>
+							<input type="checkbox" name="mana" id="iMana10" value="10" onclick="actualizarMana(this)">
+							<label for="iMana10"></label>
+							<input type="checkbox" name="mana" id="iMana11" value="11" onclick="actualizarMana(this)">
+							<label for="iMana11"></label>
+							<input type="checkbox" name="mana" id="iMana12" value="12" onclick="actualizarMana(this)">
+							<label for="iMana12"></label>
+							<input type="checkbox" name="mana" id="iMana13" value="13" onclick="actualizarMana(this)">
+							<label for="iMana13"></label>
+							<input type="checkbox" name="mana" id="iMana14" value="14" onclick="actualizarMana(this)">
+							<label for="iMana14"></label>
+							<input type="checkbox" name="mana" id="iMana15" value="15" onclick="actualizarMana(this)">
+							<label for="iMana15"></label>
+							<input type="checkbox" name="mana" id="iMana16" value="16" onclick="actualizarMana(this)">
+							<label for="iMana16"></label>
+							<input type="checkbox" name="mana" id="iMana17" value="17" onclick="actualizarMana(this)">
+							<label for="iMana17"></label>
+							<input type="checkbox" name="mana" id="iMana18" value="18" onclick="actualizarMana(this)">
+							<label for="iMana18"></label>
+							<input type="checkbox" name="mana" id="iMana19" value="19" onclick="actualizarMana(this)">
+							<label for="iMana19"></label>
+							<input type="checkbox" name="mana" id="iMana20" value="20" onclick="actualizarMana(this)">
+							<label for="iMana20"></label>
+						</div>
 					</div>
 				</div>
 			</div>

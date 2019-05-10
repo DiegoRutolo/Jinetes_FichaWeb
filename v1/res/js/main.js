@@ -33,6 +33,7 @@ function main() {
 	document.getElementById('iCarga').addEventListener('change', readFile, false);
 
 	actualizar();
+	actualizarApar(document.getElementsByName('apar')[4])
 }
 
 function form2obj() {
@@ -280,6 +281,42 @@ function data2ficha(data) {
 	obj2form();
 }
 
-function actualizarApar(valor) {
-	document.getElementById('apar').value = valor;
+function actualizarApar(casilla) {
+	document.getElementById('apar').value = casilla.value;
+	console.log(casilla.value);
+	var casillas = document.getElementsByName('apar');
+	
+	if (casilla.checked) {
+		for (var i in casillas) {
+			if (parseInt(casillas[i].value) < parseInt(casilla.value)) {
+				casillas[i].checked = true;
+			}
+		}
+	} else {
+		for (var i in casillas) {
+			if (parseInt(casillas[i].value) > parseInt(casilla.value)) {
+				casillas[i].checked = false;
+			}
+		}
+	}
+}
+
+function actualizarMana(casilla) {
+	document.getElementById('mana').value = casilla.value;
+	console.log(casilla.value);
+	var casillas = document.getElementsByName('mana');
+	
+	if (casilla.checked) {
+		for (var i in casillas) {
+			if (parseInt(casillas[i].value) < parseInt(casilla.value)) {
+				casillas[i].checked = true;
+			}
+		}
+	} else {
+		for (var i in casillas) {
+			if (parseInt(casillas[i].value) > parseInt(casilla.value)) {
+				casillas[i].checked = false;
+			}
+		}
+	}
 }
